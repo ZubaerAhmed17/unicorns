@@ -1,32 +1,66 @@
 "use strict"
+const numHorse = 11
+const fLine = 90
+let horseDiv = []
+let HorsesX = []
+let colours = "blue,red,green,yellow,purple,orange,black,brown,pink,white,grey".split(",")
+let bet = ""
 
 
-let uni0=document.getElementById("unicorn0")
-let uni0x=0  //Unicorn0's X position
+let i=0
+while(i<numHorse){
+    // create a horse
+    // document.elementById("horse0")
+    horseDiv[i] = document.createElement("div")
+    document.body.appendChild(horseDiv[i])
+    horseDiv[i].classList.add("horses")
+    horseDiv[i].style.top=i * 8 +"%"
+    horseDiv[i].style.backgroundColor=colours[i]
+    HorsesX[i]=0
+    i++
+}
+placeBet()
+function placeBet(){
+    bet = prompt(`Choose a coloured horse ${colours}`)
+    alert("you bet on: "+bet)
+}
+function resetRace(){
+    let i = 0
+    while(i<numHorse){
+    HorsesX[i]=0
+    i ++
+    }
+}
+// setInterval(moveHorses, 100)
+requestAnimationFrame(moveHorses)
+
+function moveHorses(){
+    let i=0
+    // rigging the race
+    // HorsesX[i] += Math.random()
+    while(i<numHorse){
+
+        horseDiv[i].style.left = HorsesX[i]+"%"
+        HorsesX[i] += Math.random()
 
 
-//Extra challenges .. Set the background colour of each unicorn .. (so they are different) .. ideally with Javascript (not CSS)
-//Add a third unicorn - three horse race
-// - What if we wanted 20 unicorns ??  []
-
-
-setInterval(moveUnicorns,100)  //How fast the race is - smaller=faster
-
-
-function moveUnicorns(){
-
-    uni0.style.left= uni0x +"%"
-
-    uni0x +=1  //add 1% to the unicorns x position (Add a random amount instead)
+        if (HorsesX[i]> 90){
+            displayBet(i)
+            alert(`${colours[i]} won the race`)
+            resetRace()
         
-    //Move all unicorns a random amount each
-    //If a unicorn has crossed the finish line
-        //Display winner
-        // restart race           
-
+        }
+        i++
+    }
+    requestAnimationFrame(moveHorses)
 }
 
-
-
-
+function displayBet(i){
+    if (bet != colours[i]){
+        alert("you lost the bet")
+    }
+    else{
+        alert("you won the bet")
+    }
+}
 
