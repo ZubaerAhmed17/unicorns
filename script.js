@@ -6,8 +6,6 @@ let HorsesX = []
 let colours = "blue,red,green,yellow,purple,orange,black,brown,pink,white,grey".split(",")
 let bet = ""
 
-
-<<<<<<< HEAD
 function setUp(){
     let i=0
     while(i<numHorse){
@@ -53,7 +51,6 @@ function moveHorses(){
             alert(`${colours[i]} won the race`)
             resetRace()
             placeBet()
-=======
 let i=0
 while(i<numHorse){
     // create a horse
@@ -110,9 +107,7 @@ function displayBet(i){
         alert("you won the bet")
     }
 }
->>>>>>> 058f3f49ef2ab1f2d548d49197500706c47102d2
 
-        
         }
         i++
     }
